@@ -21,4 +21,8 @@ class Level {
     _entities.foreach(_.update(delay))
   }
 
+  def players(): Seq[Player] = entities.collect {
+    case p: Player => p
+  }
+
 }

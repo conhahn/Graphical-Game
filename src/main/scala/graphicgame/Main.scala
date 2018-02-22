@@ -15,7 +15,7 @@ import scalafx.scene.input._
 
 object Main extends JFXApp {
   val level = new Level
-  var player = new Player(0.0, 0.0, level, false)
+  var player = new Player(9, 9, level, false)
   var enemy = new Enemy(10.0, 20.0, level, false, -1)
 
   stage = new JFXApp.PrimaryStage {
@@ -46,11 +46,16 @@ object Main extends JFXApp {
           case _ =>
         }
       }
-      myRenderer.render(level, player.x, player.y)
-      //      val timer: AnimationTimer = AnimationTimer(time => {
-      //
-      //      })
-      //      timer.start
+      var lastTime = 0L
+      val timer = AnimationTimer(time => {
+        if (lastTime > 0) {
+          val delay = (time - lastTime) / 1e9
+          level.updateAll(delay)
+        }
+        lastTime = time
+        myRenderer.render(level, player.x, player.y)
+      })
+      timer.start()
     }
   }
 }

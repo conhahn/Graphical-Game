@@ -1,10 +1,11 @@
 package graphicgame
 
-class Player(private var _x: Double, private var _y: Double, level: Level, movingUp: Boolean) extends Entity {
+class Player(private var _x: Double, private var _y: Double, val level: Level, movingUp: Boolean) extends Entity {
+  level += this
   def x: Double = _x
   def y: Double = _y
-  def width: Double = 6.9
-  def height: Double = 6.9
+  def width: Double = 1
+  def height: Double = 1
 
   var upPressed = false
   var downPressed = false
@@ -13,15 +14,24 @@ class Player(private var _x: Double, private var _y: Double, level: Level, movin
 
   def update(delay: Double): Unit = {
     if (upPressed == true) {
-      _y = _y + 0.5
+      moveEntity(0,5*delay*(-1))
     } else if (downPressed == true) {
-      _y = _y - 0.5
+      moveEntity(0,5*delay)
     } else if (rightPressed == true) {
-      _x = _x + 0.5
+      moveEntity(5*delay,0)
     } else if (leftPressed == true) {
-      _x = _x + 0.5
+      moveEntity(5*delay*(-1),0)
     }
   }
+  
+  def moveEntity(dx: Double, dy: Double): Unit = {
+    if(level.maze.isClear(x+dx, y+dy, width, height)){
+      _y = _y + dy
+      _x = _x + dx
+    }
+  }
+  
+  
   def postCheck(): Unit = {
     ???
   }
