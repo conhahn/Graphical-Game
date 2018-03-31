@@ -19,6 +19,8 @@ class Level {
 
   def updateAll(delay: Double): Unit = {
     _entities.foreach(_.update(delay))
+    _entities.foreach(_.postCheck(_entities))
+    _entities = _entities.filter(_.stillHere() == true)
   }
 
   def players(): Seq[Player] = entities.collect {

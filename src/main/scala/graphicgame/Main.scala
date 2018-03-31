@@ -15,8 +15,10 @@ import scalafx.scene.input._
 
 object Main extends JFXApp {
   val level = new Level
+
   var player = new Player(9, 9, level, false)
-  var enemy = new Enemy(10.0, 20.0, level, false, -1)
+  var enemy = new Enemy(10.0, 20.0, level, false)
+  var spacePressed = false
 
   stage = new JFXApp.PrimaryStage {
     title = "Connor's Game" // Change this to match the theme of your game.

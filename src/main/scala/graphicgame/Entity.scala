@@ -6,7 +6,7 @@ trait Entity {
   def width: Double
   def height: Double
   def update(delay: Double): Unit
-  def postCheck(): Unit
+  def postCheck(e: Seq[Entity]): Unit
   def stillHere(): Boolean
 }
 
