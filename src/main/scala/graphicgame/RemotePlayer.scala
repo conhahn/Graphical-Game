@@ -1,6 +1,6 @@
 package graphicgame
 
-trait RemotePlayer {
+@remote trait RemotePlayer {
   def upPressed(): Unit
   def upReleased(): Unit
   def downPressed(): Unit

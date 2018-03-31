@@ -1,6 +1,6 @@
 package graphicgame
 
-trait RemoteServer {
+@remote trait RemoteServer {
   def connect(client: RemoteClient): RemotePlayer
 
 }
