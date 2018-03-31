@@ -1,0 +1,5 @@
+package graphicgame
+
+class PassableLevel {
+  
+}
