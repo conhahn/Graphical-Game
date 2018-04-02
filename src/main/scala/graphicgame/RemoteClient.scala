@@ -1,5 +1,5 @@
 package graphicgame
 
 @remote trait RemoteClient {
-  def updateLevel(lvl:PassableLevel):Unit
+  def updateLevel(lvl: PassableLevel, x: Double, y: Double): Unit
 }

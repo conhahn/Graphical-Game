@@ -8,11 +8,11 @@ class Bullet(private var _x: Double, private var _y: Double, val level: Level, p
   def width: Double = 1.5
   def height: Double = 1.0
 
-  var count = 0
+  var count = 0.0
   def update(delay: Double): Unit = {
-    if (count < 300) {
+    if (count < 5) {
       moveEntity((-2) * delay)
-      count += 1
+      count += delay
     } else dead = true
   }
 
@@ -32,4 +32,7 @@ class Bullet(private var _x: Double, private var _y: Double, val level: Level, p
     !dead
   }
 
+  def buildPassable(): PassableEntity = {
+    PassableEntity(Entity.EntityType.Bullet,x,y,width,height)
+  }
 }

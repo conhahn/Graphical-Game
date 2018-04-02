@@ -18,6 +18,7 @@ class Level {
   }
 
   def updateAll(delay: Double): Unit = {
+    //println(_entities)
     _entities.foreach(_.update(delay))
     _entities.foreach(_.postCheck(_entities))
     _entities = _entities.filter(_.stillHere() == true)
@@ -27,4 +28,9 @@ class Level {
     case p: Player => p
   }
 
+  def buildPassable: PassableLevel = {
+    PassableLevel(maze,_entities.map(_.buildPassable))
+  }
+  
+  
 }

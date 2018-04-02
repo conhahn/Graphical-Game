@@ -1,5 +1,3 @@
 package graphicgame
 
-class PassableLevel {
-  
-}
+case class PassableLevel(maze: Maze, entities: Seq[PassableEntity])

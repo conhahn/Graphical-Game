@@ -3,7 +3,7 @@ package graphicgame
 import scala.reflect.ClassTag
 
 class ArrayQueue[A: ClassTag] extends MyQueue[A] {
-  private var data = new Array[A](100)
+  private var data = new Array[A](10)
   private var front = 0
   private var back = 0
 

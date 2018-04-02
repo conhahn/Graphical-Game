@@ -8,6 +8,7 @@ trait Entity {
   def update(delay: Double): Unit
   def postCheck(e: Seq[Entity]): Unit
   def stillHere(): Boolean
+  def buildPassable(): PassableEntity
 }
 
 object Entity {
@@ -16,4 +17,8 @@ object Entity {
       true
     } else false
   }
+ 
+  object EntityType extends Enumeration {
+   val Player, Enemy, Bullet = Value
+ }
 }

@@ -1,6 +1,8 @@
 package graphicgame
 
-class Player(private var _x: Double, private var _y: Double, val level: Level, private var dead: Boolean) extends Entity {
+import java.rmi.server.UnicastRemoteObject
+
+class Player(private var _x: Double, private var _y: Double, val level: Level, private var dead: Boolean) extends UnicastRemoteObject with Entity with RemotePlayer {
   while (!level.maze.isClear(_x, _y, width, height)) {
     _x += 1
     _y += 1
@@ -19,6 +21,7 @@ class Player(private var _x: Double, private var _y: Double, val level: Level, p
   var spacePressed = false
 
   def update(delay: Double): Unit = {
+    println(x,y,upPressed,downPressed,leftPressed)
     if (upPressed == true) {
       moveEntity(0, 5 * delay * (-1))
     } else if (downPressed == true) {
@@ -86,6 +89,10 @@ class Player(private var _x: Double, private var _y: Double, val level: Level, p
 
   def moveDownReleased(): Unit = {
     downPressed = false
+  }
+
+  def buildPassable(): PassableEntity = {
+    PassableEntity(Entity.EntityType.Player,x,y,width,height)
   }
 }
 

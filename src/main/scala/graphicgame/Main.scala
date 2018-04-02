@@ -55,7 +55,7 @@ object Main extends JFXApp {
           level.updateAll(delay)
         }
         lastTime = time
-        myRenderer.render(level, player.x, player.y)
+        myRenderer.render(level.buildPassable, player.x, player.y)
       })
       timer.start()
     }
